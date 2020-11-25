@@ -34,3 +34,18 @@ def test_for_adding_two_lengths(first_unit, first_value, second_unit, second_val
     first_distance = QuantityMeasurements(first_unit, first_value)
     second_distance = QuantityMeasurements(second_unit, second_value)
     assert first_distance.add(second_distance) == output
+
+@pytest.mark.parametrize('first_unit, first_value, second_unit,second_value,output',
+                         [(Temperature.fahrenheit, 80.6, Temperature.celsius, 27, True)])
+def test_for_temperature_conversion(first_unit, first_value, second_unit, second_value, output):
+    first_temperature = QuantityMeasurements(first_unit, first_value)
+    second_temperature = QuantityMeasurements(second_unit, second_value)
+    assert first_temperature.compare(second_temperature) == output
+
+
+@pytest.mark.parametrize('first_unit, first_value, second_unit,second_value,output',
+                         [(Temperature.fahrenheit, 185, Temperature.celsius, 85, 370)])
+def test_for_temperature_addition(first_unit, first_value, second_unit, second_value, output):
+    first_temperature = QuantityMeasurements(first_unit, first_value)
+    second_temperature = QuantityMeasurements(second_unit, second_value)
+    assert first_temperature.add(second_temperature) == output
