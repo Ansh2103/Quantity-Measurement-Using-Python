@@ -35,3 +35,16 @@ class Weights(enum.Enum):
 
     def convert(self, value):
         return self.unit * value
+
+class Distance(enum.Enum):
+    feet = 12
+    inch = 1.0
+    yard = 36.0
+    cm = 0.4
+    meter = 39.4
+
+    def __init__(self, unit):
+        self.unit = unit
+
+    def convert(self, value):
+        return self.unit * value
