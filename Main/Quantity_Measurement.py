@@ -1,33 +1,58 @@
 import enum
 
-
 class QuantityMeasurements:
     def __init__(self, unit, value):
-        self.__unit = unit
-        self.__value = value
+        '''
+         declared __init__ constructor to initialize the
+         attributes of Class QuantityMeasurements
 
-    def __eq__(self, other):
-        if isinstance(other, QuantityMeasurements):
-            return self.__value == other.__value
+        :param unit: unit will be provided by user
+        :param value: value will be provided by user
+        '''
+        self.unit = unit
+        self.value = value
+
+    def __eq__(self, another):
+        '''
+
+        :param another: it will be provided by user itself
+        :return:
+        '''
+        if isinstance(another, QuantityMeasurements):
+            return self.value == another.value
         return False
 
-    def compare(self, other):
-        if self.__unit.__class__ == other.__unit.__class__:
-            if self.__unit.__class__.convert(self.__unit, self.__value) == other.__unit.__class__.convert(other.__unit,
-                                                                                                          other.__value):
+    def compare(self, another):
+        '''
+
+        :param another:it will be provided by user itself
+        :return: it returns whether true or false
+                 if both the units before and after conversion  are equal
+                 it ruturns true otherwise returns false
+        '''
+        if self.unit.__class__ == another.unit.__class__:
+            if self.unit.__class__.convert(self.unit, self.value) == another.unit.__class__.convert(another.unit,
+                                                                                                          another.value):
                 return True
         return False
 
-    def add(self, other):
-        if self.__unit.__class__ == other.__unit.__class__:
-            return self.__unit.__class__.convert(self.__unit, self.__value) + other.__unit.__class__.convert(
-                other.__unit, other.__value)
+    def add(self, another):
+        '''
+
+        :param another: it will be provide by user
+        :return: it returns the addition of both the values
+                    after conversion
+        '''
+        if self.unit.__class__ == another.unit.__class__:
+            return self.unit.__class__.convert(self.unit, self.value) + another.unit.__class__.convert(
+                another.unit, another.value)
         return 0
 
 
 class Weights(enum.Enum):
     kilo_gram = 1.0
     gram = 0.001
+    milligram = 0.000001
     tonne = 1000
 
     def __init__(self, unit):
