@@ -50,10 +50,10 @@ class QuantityMeasurements:
 
 
 class Weights(enum.Enum):
-    kilo_gram = 1.0
-    gram = 0.001
-    milligram = 0.000001
-    tonne = 1000
+    KG = 1.0
+    GRAM = 0.001
+    MG = 0.000001
+    TONNE = 1000
 
     def __init__(self, unit):
         self.unit = unit
@@ -62,11 +62,11 @@ class Weights(enum.Enum):
         return self.unit * value
 
 class Distance(enum.Enum):
-    feet = 12
-    inch = 1.0
-    yard = 36.0
-    cm = 0.4
-    meter = 39.4
+    FEET = 12
+    INCH = 1.0
+    YARD = 36.0
+    CENTIMETER = 0.4
+    METER = 39.4
 
     def __init__(self, unit):
         self.unit = unit
@@ -75,14 +75,14 @@ class Distance(enum.Enum):
         return self.unit * value
 
 class Temperature(enum.Enum):
-    celsius = 1.8
-    fahrenheit = 1
+    CELCIUS = 1.8
+    FAHRENHEIT = 1
 
     def __init__(self, unit):
         self.unit = unit
 
     def convert(self, value):
-        if self == Temperature.celsius:
+        if self == Temperature.CELCIUS:
             return self.unit * value + 32
         else:
             return self.unit * value
